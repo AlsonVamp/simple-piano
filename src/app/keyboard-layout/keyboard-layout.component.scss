@@ -1,8 +1,23 @@
 .keyboard{
+    display: block;
     height: 12rem;
     display: flex;
     flex: 8;
     justify-content: center;
+    width: 684px;
+    height: 232px;
+}
+.keyboard-wrapper{
+    position: absolute;
+    top: 266px;
+    left: 220px;
+}
+.keyboard-image{
+    background: url("../../assets/img/piano_case.png") no-repeat top left;
+    height:501px;
+    width:944px;
+    margin: 0 auto;
+    position:relative;
 }
 .note {
     flex: 1;
@@ -24,7 +39,7 @@ flex-flow: column;
     background-color: #555;
     color: white;
     width: 8%;
-    margin: 0 -4% 
+    margin: 0 -3% 
 }  
 .pressed {
     border-top:3px solid gray

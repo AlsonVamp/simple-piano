@@ -1,17 +1,11 @@
-<div class="row align-center">
-  <div class="column align-self-middle large-6 medium-6">
+<div class="keyboard-image">
+  <div class="keyboard-wrapper">
     <div class="keyboard">
-      <div *ngFor="let item of keysMapping" key 
-      [keyboardCode]="item.code" 
-      [soundSource]="item.src" 
-      (pressed)="item.pressed=$event"
-      [rate]="item.rate"
-      [ngClass]="{'pressed': item.pressed, 'white':item.type=='white','black':item.type=='black'}" class="note">
+      <div *ngFor="let item of keysMapping" key [keyboardCode]="item.code" [soundSource]="item.src" (pressed)="item.pressed=$event"
+        [rate]="item.rate" [ngClass]="{'pressed': item.pressed, 'white':item.type=='white','black':item.type=='black'}" class="note">
         {{item.note}}
       </div>
     </div>
   </div>
-  <div class="column medium-1">
-      <volume-slider></volume-slider>
-    </div>
+
 </div>
