@@ -11,11 +11,13 @@ export class KeyDirective implements OnInit {
   }
   @Input() keyboardCode: number;
   @Input() soundSource: string[];
+  @Input() rate: number = 1;
   @Output() pressed = new EventEmitter();
   ngOnInit() {
     this.sound = new Howl({
       src: this.soundSource
     });
+    this.sound.rate(this.rate);
   }
   @HostListener('mousedown') onMouseDown() {
     this.play();
