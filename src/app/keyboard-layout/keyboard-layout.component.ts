@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'keyboard-layout',
   templateUrl: './keyboard-layout.component.html',
-  styleUrls: ['./keyboard-layout.component.css']
+  styleUrls: ['./keyboard-layout.component.scss']
 })
 export class KeyboardLayoutComponent implements OnInit {
   keysMapping = [
