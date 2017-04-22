@@ -6,11 +6,13 @@ import 'howler';
 
 import { AppComponent } from './app.component';
 import { KeyDirective } from './key.directive';
+import { KeyboardLayoutComponent } from './keyboard-layout/keyboard-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    KeyDirective
+    KeyDirective,
+    KeyboardLayoutComponent
   ],
   imports: [
     BrowserModule,
