@@ -1,3 +1,10 @@
-<div *ngFor="let item of keysMapping" key [keyboardCode]="item.code" [soundSource]="item.src">
-  {{item.note}}
+<div class="row align-center">
+  <div class="column align-self-middle large-6 medium-6">
+    <div class="keyboard">
+      <div *ngFor="let item of keysMapping" key [keyboardCode]="item.code" [soundSource]="item.src" (pressed)="item.pressed=$event"
+        [ngClass]="{'pressed': item.pressed, 'white':item.type=='white','black':item.type=='black'}" class="note">
+        {{item.note}}
+      </div>
+    </div>
+  </div>
 </div>

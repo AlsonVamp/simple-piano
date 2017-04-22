@@ -1,4 +1,4 @@
-import { Directive, HostListener, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, HostListener, ElementRef, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Directive({
   selector: '[key]'
@@ -11,6 +11,7 @@ export class KeyDirective implements OnInit {
   }
   @Input() keyboardCode: number;
   @Input() soundSource: string[];
+  @Output() pressed = new EventEmitter();
   ngOnInit() {
     this.sound = new Howl({
       src: this.soundSource
@@ -24,28 +25,26 @@ export class KeyDirective implements OnInit {
   }
   @HostListener('document:keydown', ['$event']) onKeyDown(event) {
     if (event.keyCode == this.keyboardCode && !this.playing) {
-      this.playing = true;
       this.play();
     }
 
   }
   @HostListener('document:keyup', ['$event']) onKeyUp(event) {
     if (event.keyCode == this.keyboardCode) {
-      this.playing = false;
       this.stop();
     }
   }
   private play() {
     if (this.sound.playing)
       this.sound.stop();
+    this.playing = true;
     this.sound.play();
-
-    console.log('play')
+    this.pressed.emit(this.playing);
   }
   private stop() {
+    this.playing = false;
     this.sound.stop();
-    console.log('stop');
-
+    this.pressed.emit(this.playing);
   }
 
 }
