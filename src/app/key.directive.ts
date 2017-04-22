@@ -9,15 +9,17 @@ export class KeyDirective implements OnInit {
   constructor(private el: ElementRef) {
 
   }
+  @Input() volume: number = 1.0;
   @Input() keyboardCode: number;
   @Input() soundSource: string[];
-  @Input() rate: number = 1;
+  @Input() rate: number = 1.0;
   @Output() pressed = new EventEmitter();
   ngOnInit() {
     this.sound = new Howl({
-      src: this.soundSource
+      src: this.soundSource,
+      volume: this.volume,
+      rate: this.rate
     });
-    this.sound.rate(this.rate);
   }
   @HostListener('mousedown') onMouseDown() {
     this.play();
@@ -44,8 +46,9 @@ export class KeyDirective implements OnInit {
     this.pressed.emit(this.playing);
   }
   private stop() {
-    this.playing = false;
+    //this.sound.fade(1.0, 0, 200);
     this.sound.stop();
+    this.playing = false;
     this.pressed.emit(this.playing);
   }
 

@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Simple Piano';
+  ngOnInit() {
+    Howler.volume(1.0);
+  }
 }

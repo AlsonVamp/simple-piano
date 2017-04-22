@@ -7,12 +7,14 @@ import 'howler';
 import { AppComponent } from './app.component';
 import { KeyDirective } from './key.directive';
 import { KeyboardLayoutComponent } from './keyboard-layout/keyboard-layout.component';
+import { VolumeSliderComponent } from './volume-slider/volume-slider.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     KeyDirective,
-    KeyboardLayoutComponent
+    KeyboardLayoutComponent,
+    VolumeSliderComponent
   ],
   imports: [
     BrowserModule,
