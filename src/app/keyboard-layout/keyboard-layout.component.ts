@@ -69,12 +69,16 @@ export class KeyboardLayoutComponent implements OnInit {
     { note: "B3", src: "assets/sounds/cello/spic_A2_v2_RR1.mp3", code: null, type: "white", pressed: false, rate: 1.116 },
     { note: "C4", src: "assets/sounds/cello/spic_A2_v2_RR1.mp3", code: null, type: "white", pressed: false, rate: 1.185 }
   ];
+  instruments: NoteDescription[][] = [this.pianoMapping, this.celloMapping]
+  instrumentNum: number = 0;
   selectedInstrument: NoteDescription[];
   constructor() { }
 
   ngOnInit() {
-    this.selectedInstrument = this.celloMapping
+    this.selectedInstrument = this.instruments[this.instrumentNum];
   }
-  public onPress(event) {
+  public onInstrumentChange(num) {
+    this.instrumentNum = num;
+    this.selectedInstrument = this.instruments[this.instrumentNum];
   }
 }

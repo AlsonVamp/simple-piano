@@ -7,6 +7,24 @@
     background-color: #74261d;
     box-shadow:inset 0px 62px 133px 6px rgba(0, 0, 0, 0.7);
 }
+.instrument-selector {
+    position: absolute;
+    top: 191px;
+    left: 420px;
+}
+.dash-button{
+    cursor: pointer;
+    display: inline-block;
+    width: 12px;
+    height: 32px;
+    margin-right: 18px;
+    background-color:#aab69d;
+    box-shadow:inset 1px 1px 3px 1px rgba(0, 0, 0, 0.4);
+}
+.red-button {
+    background-color: #e11f1d;
+    box-shadow: 0px 0px 6px 3px rgba(255, 0, 0, 0.3), inset 1px 1px 3px 1px rgba(0, 0, 0, 0.4);
+}
 .keyboard-wrapper{
     position: absolute;
     top: 266px;

@@ -1,4 +1,10 @@
 <div class="keyboard-image">
+  <div class="instrument-selector">
+    <div class="dash-button" (click)="onInstrumentChange(0)" [ngClass]="{'red-button': instrumentNum==0}">
+    </div>
+    <div class="dash-button" (click)="onInstrumentChange(1)" [ngClass]="{'red-button': instrumentNum==1}">
+    </div>
+  </div>
   <div class="keyboard-wrapper">
     <div class="keyboard">
       <div *ngFor="let item of selectedInstrument" key [keyboardCode]="item.code" [soundSource]="item.src" (pressed)="item.pressed=$event"
