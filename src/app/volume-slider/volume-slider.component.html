@@ -1,5 +1,10 @@
-<div class="knob wrap">
-  <div class="knob-handle" role="slider" (wheel)="onWheelDragging($event)" [style.transform]="rotationStyle">
-    <span class="knob-point"></span>
+<div class="knob">
+  <div class="wrap">
+    <div class="knob-handle" role="slider" (wheel)="onWheelDragging($event)" [style.transform]="rotationStyle">
+      <span class="knob-point"></span>
+    </div>
+  </div>
+  <div class="text">
+    <span>Volume</span>
   </div>
 </div>
