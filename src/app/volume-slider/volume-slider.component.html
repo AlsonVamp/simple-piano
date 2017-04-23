@@ -1,5 +1,5 @@
-<div class="slider vertical">
-  <span class="slider-handle" role="slider" (mousedown)="onDrag($event)"></span>
-  <span class="slider-fill"></span>
-  <input type="hidden">
+<div class="knob wrap">
+  <div class="knob-handle" role="slider" (wheel)="onWheelDragging($event)" [style.transform]="rotationStyle">
+    <span class="knob-point"></span>
+  </div>
 </div>
