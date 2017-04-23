@@ -9,7 +9,7 @@
     <div class="keyboard">
       <div *ngFor="let item of selectedInstrument" key [keyboardCode]="item.code" [soundSource]="item.src" (pressed)="item.pressed=$event"
         [rate]="item.rate" [ngClass]="{'pressed': item.pressed, 'white':item.type=='white','black':item.type=='black'}" class="note">
-        {{item.note}}
+        <span *ngIf="showNoteName">{{item.note}}</span>
       </div>
     </div>
   </div>

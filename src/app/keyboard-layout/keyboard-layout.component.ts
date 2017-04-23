@@ -71,6 +71,7 @@ export class KeyboardLayoutComponent implements OnInit {
   ];
   instruments: NoteDescription[][] = [this.pianoMapping, this.celloMapping]
   instrumentNum: number = 0;
+  showNoteName: boolean = false;
   selectedInstrument: NoteDescription[];
   constructor() { }
 
