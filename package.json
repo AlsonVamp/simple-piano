@@ -1,7 +1,8 @@
 {
-  "name": "angularattack2017-simplicity",
+  "name": "Simplicity Piano",
   "version": "0.0.0",
   "license": "MIT",
+  "author": "Alexander Nazarov",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -23,7 +24,7 @@
     "@types/howler": "^2.0.2",
     "core-js": "^2.4.1",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4"
+    "zone.js": "0.8.5"
   },
   "devDependencies": {
     "@angular/cli": "1.0.0",
