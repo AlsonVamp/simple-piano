@@ -8,7 +8,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class VolumeSliderComponent implements OnInit {
   min: number = 0;
   max: number = 1;
+  isMouseDown: boolean = false;
   value: number = 0.7;
+  initialMousePosition: number;
+  mouseWheelScaling: number = 5000;
   rotationStyle: string = this.sanitizeRotation(this.value);
   @Output() levelChange = new EventEmitter();
   constructor() { }
@@ -17,10 +20,25 @@ export class VolumeSliderComponent implements OnInit {
     Howler.volume(this.value);
   }
 
-  onWheelDragging(e) {
-    if (e.preventDefault)
-      e.preventDefault()
-    let newValue: number = Number.parseFloat((this.value + e.wheelDelta / 5000).toFixed(2));
+  onMouseUp(e) {
+    this.isMouseDown = false;
+  }
+  onMouseDown(e) {
+    this.isMouseDown = true;
+  }
+  onMouseMove(e) {
+    if (this.isMouseDown) {
+      if (this.initialMousePosition) {
+        let diff = e.clientX - this.initialMousePosition;
+        this._setNewValue(this.value + diff / this.mouseWheelScaling);
+      }
+      else {
+        this.initialMousePosition = e.clientX;
+      }
+    }
+
+  }
+  _setNewValue(newValue) {
     if (newValue < this.min) {
       this.value = this.min;
     } else if (newValue > this.max) {
@@ -31,6 +49,12 @@ export class VolumeSliderComponent implements OnInit {
     this.rotationStyle = this.sanitizeRotation(this.value);
     this.levelChange.emit(this.value);
     Howler.volume(this.value);
+  }
+  onWheelDragging(e) {
+    if (e.preventDefault)
+      e.preventDefault()
+    let newValue: number = Number.parseFloat((this.value + e.wheelDelta / this.mouseWheelScaling).toFixed(2));
+    this._setNewValue(newValue);
   }
 
   sanitizeRotation(val) {
