@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'volume-slider',
@@ -9,7 +9,7 @@ export class VolumeSliderComponent implements OnInit {
   min: number = 0;
   max: number = 1;
   isMouseDown: boolean = false;
-  value: number = 0.7;
+  @Input() value: number = 0.7;
   initialMousePosition: number;
   mouseWheelScaling: number = 5000;
   rotationStyle: string = this.sanitizeRotation(this.value);
@@ -17,7 +17,7 @@ export class VolumeSliderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    Howler.volume(this.value);
+    this.levelChange.emit(this.value);
   }
 
   onMouseUp(e) {
@@ -48,7 +48,6 @@ export class VolumeSliderComponent implements OnInit {
     }
     this.rotationStyle = this.sanitizeRotation(this.value);
     this.levelChange.emit(this.value);
-    Howler.volume(this.value);
   }
   onWheelDragging(e) {
     if (e.preventDefault)

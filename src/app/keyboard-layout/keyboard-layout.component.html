@@ -1,5 +1,5 @@
 <div class="keyboard-image">
-  <volume-slider></volume-slider>
+  <volume-slider (levelChange)="setVolume($event)"></volume-slider>
   <div class="instrument-selector">
     <div class="dash-button" (click)="onInstrumentChange(0)" [ngClass]="{'red-button': instrumentNum==0}">
     </div>

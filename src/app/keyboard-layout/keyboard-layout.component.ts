@@ -78,6 +78,9 @@ export class KeyboardLayoutComponent implements OnInit {
   ngOnInit() {
     this.selectedInstrument = this.instruments[this.instrumentNum];
   }
+  setVolume(val) {
+    Howler.volume(val);
+  }
   public onInstrumentChange(num) {
     this.instrumentNum = num;
     this.selectedInstrument = this.instruments[this.instrumentNum];
