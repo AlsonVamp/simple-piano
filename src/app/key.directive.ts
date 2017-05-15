@@ -1,12 +1,12 @@
-import { Directive, HostListener, ElementRef, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Directive, HostListener, ElementRef, Input, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 @Directive({
   selector: '[key]'
 })
-export class KeyDirective implements OnInit {
+export class KeyDirective implements OnInit, OnChanges {
   sound: Howl;
-  playing: boolean = false;
-  constructor(private el: ElementRef) {
+  @Input() playing: boolean = false;
+  constructor() {
 
   }
   @Input() volume: number = 1.0;
@@ -21,17 +21,32 @@ export class KeyDirective implements OnInit {
       rate: this.rate
     });
   }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.hasOwnProperty("playing") && !changes.playing.isFirstChange()) {
+      console.log(changes.playing.currentValue);
+      changes.playing.currentValue ? this.play() : this.stop();
+    }
+  }
   @HostListener('mousedown') onMouseDown() {
     this.play();
   }
   @HostListener('mouseup') onMouseUp() {
     this.stop();
   }
+  @HostListener('mouseleave') onMouseLeave() {
+    this.stop();
+  }
+  @HostListener('mouseover', ['$event']) onMouseOver(event) {
+    if (event.buttons === 1)
+      this.play();
+  }
+  @HostListener('dragstart') onDrag() {
+    return false;
+  }
   @HostListener('document:keydown', ['$event']) onKeyDown(event) {
     if (event.keyCode == this.keyboardCode && !this.playing) {
       this.play();
     }
-
   }
   @HostListener('document:keyup', ['$event']) onKeyUp(event) {
     if (event.keyCode == this.keyboardCode) {
