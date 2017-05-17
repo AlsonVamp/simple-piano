@@ -118,7 +118,6 @@ export class KeyboardLayoutComponent implements OnInit {
 
   private _player(melody) {
     let element = melody[0];
-    console.log(element, new Date());
     if (element) {
       element.cmd === "ON" ? this._noteOn(element.note) : this._noteOff(element.note);
       setTimeout(() => {

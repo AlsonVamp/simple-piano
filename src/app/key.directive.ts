@@ -23,7 +23,6 @@ export class KeyDirective implements OnInit, OnChanges {
   }
   ngOnChanges(changes: SimpleChanges) {
     if (changes.hasOwnProperty("playing") && !changes.playing.isFirstChange()) {
-      console.log(changes.playing.currentValue);
       changes.playing.currentValue ? this.play() : this.stop();
     }
   }

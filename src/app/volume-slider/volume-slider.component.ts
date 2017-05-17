@@ -11,7 +11,8 @@ export class VolumeSliderComponent implements OnInit {
   isMouseDown: boolean = false;
   @Input() value: number = 0.7;
   initialMousePosition: number;
-  mouseWheelScaling: number = 5000;
+  mouseWheelScaling: number = 50;
+  mouseMoveScaling: number = 2000;
   rotationStyle: string = this.sanitizeRotation(this.value);
   @Output() levelChange = new EventEmitter();
   constructor() { }
@@ -30,7 +31,7 @@ export class VolumeSliderComponent implements OnInit {
     if (this.isMouseDown) {
       if (this.initialMousePosition) {
         let diff = e.clientX - this.initialMousePosition;
-        this._setNewValue(this.value + diff / this.mouseWheelScaling);
+        this._setNewValue(this.value + diff / this.mouseMoveScaling);
       }
       else {
         this.initialMousePosition = e.clientX;
@@ -51,8 +52,9 @@ export class VolumeSliderComponent implements OnInit {
   }
   onWheelDragging(e) {
     if (e.preventDefault)
-      e.preventDefault()
-    let newValue: number = Number.parseFloat((this.value + e.wheelDelta / this.mouseWheelScaling).toFixed(2));
+      e.preventDefault();
+    let direction = (e.deltaY < 0) ? 1 : -1;
+    let newValue: number = Number.parseFloat((this.value + direction / this.mouseWheelScaling).toFixed(2));
     this._setNewValue(newValue);
   }
 
