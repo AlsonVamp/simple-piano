@@ -12,8 +12,24 @@
 
 <body>
   <app-root>
-    <img src="assets/img/piano_preview.png" alt="Piano Loading" 
-    style="display:block; margin:0 auto;-webkit-filter: blur(5px);filter: blur(5px);transition: all 0.2s ease-in-out;">
+    <style>
+      #loading {
+        filter: blur(5px);
+        animation: fadein 1s ease-out;
+        display: block;
+        margin: 0 auto;
+      }
+
+      @keyframes fadein {
+        from {
+          filter: blur(5px);
+        }
+        to {
+          filter: blur(0);
+        }
+      }
+    </style>
+    <img id="loading" src="assets/img/piano_preview.png" alt="Piano Loading">
   </app-root>
 </body>
 
