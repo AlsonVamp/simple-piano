@@ -84,7 +84,9 @@ export class KeyboardLayoutComponent implements OnInit {
     { note: "E3", cmd: "OFF", delta: 300 },
     { note: "G3", cmd: "OFF", delta: 300 },
     { note: "C4", cmd: "OFF", delta: 300 }
-  ]
+  ];
+  public pianoImgPreloadUrl: string = "../../assets/img/piano_case.png";
+  public imgUrl: string;
   constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {

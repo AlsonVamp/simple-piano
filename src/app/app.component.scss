@@ -203,6 +203,7 @@ footer {
     color: #555;
     background: #c9dbe9;
     /*background: linear-gradient(to top, #c9dbe9 50%, #fff 100%);*/
+	animation: footer-in 1s ease-in;
     span {
         display: inline-block;
         width: 33.3%;
@@ -214,4 +215,13 @@ footer {
             color: darkred;
         }
     }
+}
+
+@keyframes footer-in {
+    from {
+        bottom: -70px;
+    }
+	to {
+		bottom: 0;
+	}
 }

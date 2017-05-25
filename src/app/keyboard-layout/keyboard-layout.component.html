@@ -1,4 +1,5 @@
-<div class="keyboard-image">
+<img class="keyboard-image-preload" [src]="pianoImgPreloadUrl" (load)="imgUrl = pianoImgPreloadUrl" hidden>
+<div class="keyboard-image" *ngIf="imgUrl" [style.background-image]="'url(' + imgUrl + ')'">
   <volume-slider (levelChange)="setVolume($event)"></volume-slider>
   <div class="instrument-selector">
     <div class="dash-button" (click)="onInstrumentChange(0)" [ngClass]="{'red-button': instrumentNum==0}">
