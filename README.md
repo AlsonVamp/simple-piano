@@ -1,3 +1,17 @@
+# Simple Piano
+
+
+Toy musical instument made with Angular - http://diligent-rainstorm.surge.sh/
+
+Resources:
+
+* Angular CLI
+* [Howler.JS](https://howlerjs.com/) - audio library
+* [Salamander Grand Piano](https://musical-artifacts.com/artifacts/3) - piano samples
+* [VSCO 2 CE](http://vis.versilstudios.net/vsco-community.html) - cello samples
+
+Thank you [Tanya Strekalova](https://tani-nyuu.tumblr.com/) for instrument drawing.
+
 # Angularattack2017Simplicity
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
